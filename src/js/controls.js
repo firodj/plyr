@@ -242,6 +242,14 @@ const controls = {
         props.label = 'play';
         props.icon = 'play';
         break;
+      
+      case 'googlecast':
+        props.toggle = true;
+        props.label = 'enableGoogleCast';
+        props.labelPressed = 'disableGoogleCast';
+        props.icon = 'googlecast-off';
+        props.iconPressed = 'googlecast-on';
+        break;
 
       default:
         if (is.empty(props.label)) {
@@ -1563,6 +1571,11 @@ const controls = {
       // Airplay button
       if (control === 'airplay' && support.airplay) {
         container.appendChild(createButton.call(this, 'airplay', defaultAttributes));
+      }
+
+      // Google cast button
+      if (control === 'googlecast' && support.googlecast) {
+        container.appendChild(controls.createButton.call(this, 'googlecast'));
       }
 
       // Download button

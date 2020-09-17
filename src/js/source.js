@@ -37,6 +37,10 @@ const source = {
     // Cancel current network requests
     html5.cancelRequests.call(this);
 
+    if (this.hls) {
+      this.hls.destroy();
+    }
+
     // Destroy instance and re-setup
     this.destroy.call(
       this,
@@ -47,6 +51,9 @@ const source = {
         // Remove elements
         removeElement(this.media);
         this.media = null;
+
+        // Remove hls property if set
+        delete plyr.hls
 
         // Reset class name
         if (is.element(this.elements.container)) {

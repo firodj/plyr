@@ -49,16 +49,27 @@
   }
 }
 
+.plyr--cast-active .plyr__controls .icon--cast-on {
+  display: block;
+  color: #2243f9;
+
+  & + svg {
+    display: none;
+  }
+}
+
 // Some options are hidden by default
 .plyr [data-plyr='captions'],
 .plyr [data-plyr='pip'],
 .plyr [data-plyr='airplay'],
+.plyr [data-plyr='cast'],
 .plyr [data-plyr='fullscreen'] {
   display: none;
 }
 .plyr--captions-enabled [data-plyr='captions'],
 .plyr--pip-supported [data-plyr='pip'],
 .plyr--airplay-supported [data-plyr='airplay'],
+.plyr--cast-enabled [data-plyr='cast'],
 .plyr--fullscreen-enabled [data-plyr='fullscreen'] {
   display: inline-block;
 }

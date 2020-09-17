@@ -587,6 +587,9 @@ class Listeners {
     // Captions toggle
     this.bind(elements.buttons.captions, 'click', () => player.toggleCaptions());
 
+    // Google cast
+    this.bind(elements.buttons.googlecast, 'click', player.googlecast, 'googlecast');
+
     // Download
     this.bind(
       elements.buttons.download,

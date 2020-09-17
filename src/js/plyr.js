@@ -16,6 +16,7 @@ import html5 from './html5';
 import Listeners from './listeners';
 import media from './media';
 import Ads from './plugins/ads';
+import googlecast from './plugins/google-cast';
 import PreviewThumbnails from './plugins/preview-thumbnails';
 import source from './source';
 import Storage from './storage';
@@ -1038,6 +1039,16 @@ class Plyr {
     if (support.airplay) {
       this.media.webkitShowPlaybackTargetPicker();
     }
+  }
+
+  /**
+   * Trigger google cast dialog
+   */
+  googlecast() {
+    if (!support.googlecast) {
+        return;
+    }
+    googlecast.requestSession(this);
   }
 
   /**

@@ -37,6 +37,7 @@ const source = {
     // Cancel current network requests
     html5.cancelRequests.call(this);
 
+    // Remove hls (googlecast)
     if (this.hls) {
       this.hls.destroy();
     }
@@ -52,8 +53,8 @@ const source = {
         removeElement(this.media);
         this.media = null;
 
-        // Remove hls property if set
-        delete plyr.hls
+        // Remove hls property if set (googlecast)
+        delete this.hls
 
         // Reset class name
         if (is.element(this.elements.container)) {

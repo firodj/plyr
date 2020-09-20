@@ -51,7 +51,7 @@ const googlecast = {
                         googlecast.defaults = {
                             options: {
                                 // receiverApplicationId: window.chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
-                                receiverApplicationId: 'C248C800',
+                                receiverApplicationId: window.chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID, //'C248C800',
                                 autoJoinPolicy: window.chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED,
                             },
                         };
@@ -151,8 +151,9 @@ const googlecast = {
         if (!loadRequest) {
             loadRequest = googlecast.buildLoadRequest(plyr);
         }
+
         session.loadMedia(loadRequest).then(() => {
-            googlecast.debug.log('Successfully handled loadMedia');
+            googlecast.debug.log(`Successfully handled loadMedia: ${loadRequest.media.contentId}`);
             googlecast.getCurrentPlyr().googlecastLoadRequest = loadRequest;
             googlecast.bindPlyr(plyr);
         }).catch((err) => {
@@ -192,7 +193,7 @@ const googlecast = {
 
         const options = extend({}, defaults);
         const mediaInfo = new window.chrome.cast.media.MediaInfo(options.mediaInfo.source, options.mediaInfo.contentType);
-        mediaInfo.streamType = defaults.mediaInfo.streamType;
+        mediaInfo.streamType = options.streamType;
 
         mediaInfo.metadata = new window.chrome.cast.media.GenericMediaMetadata();
         Object.assign(mediaInfo.metadata, options.metadata);

@@ -367,6 +367,10 @@ class Plyr {
     }
 
     // Return the promise (for HTML5)
+    if (this.googlecastEnabled === true) {
+      // return Promise.resolve();
+      debugger;
+    } 
     return this.media.play();
   }
 
@@ -378,6 +382,9 @@ class Plyr {
       return null;
     }
 
+    if (this.googlecastEnabled === true) {
+      // return Promise.resolve();
+    }
     return this.media.pause();
   }
 
@@ -1045,10 +1052,9 @@ class Plyr {
    * Trigger google cast dialog
    */
   googlecast() {
-    if (!support.googlecast) {
-        return;
+    if (support.googlecast) {
+      googlecast.requestSession(this);
     }
-    googlecast.requestSession(this);
   }
 
   /**

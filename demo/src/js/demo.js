@@ -53,6 +53,9 @@ import toggleClass from './toggle-class';
       captions: {
         active: true,
       },
+      googlecast: {
+        enabled: true,
+      },
       ads: {
         enabled: window.location.host.includes(production),
         publisherId: '918848828995742',
